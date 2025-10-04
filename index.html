@@ -578,92 +578,260 @@
             margin-bottom: 1rem;
         }
 
-        /* Contact Section - Terminal Style */
+        /* Contact Section - Glassmorphism Card Style */
         .contact-section {
             min-height: 100vh;
             padding: 5rem 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
 
-        .terminal {
+        .contact-wrapper {
             width: 100%;
-            max-width: 800px;
-            background: #000;
-            border-radius: 10px;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info-card {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 2px solid rgba(0, 243, 255, 0.3);
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 0 60px rgba(0, 243, 255, 0.5);
         }
 
-        .terminal-header {
-            background: #1a1a1a;
-            padding: 1rem;
-            display: flex;
-            gap: 0.5rem;
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 243, 255, 0.1), transparent);
+            animation: rotateGradient 10s linear infinite;
         }
 
-        .terminal-btn {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
+        @keyframes rotateGradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .terminal-btn:nth-child(1) { background: #ff5f56; }
-        .terminal-btn:nth-child(2) { background: #ffbd2e; }
-        .terminal-btn:nth-child(3) { background: #27c93f; }
-
-        .terminal-body {
-            padding: 2rem;
-            font-family: 'Courier New', monospace;
+        .contact-info-content {
+            position: relative;
+            z-index: 1;
         }
 
-        .terminal-line {
+        .contact-title {
+            font-size: 3rem;
             margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+        }
+
+        .info-item {
             display: flex;
             align-items: center;
-        }
-
-        .terminal-prompt {
-            color: var(--neon-blue);
-            margin-right: 1rem;
-        }
-
-        .terminal-text {
-            color: #0f0;
-            animation: typeWriter 0.5s steps(20);
-        }
-
-        @keyframes typeWriter {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        .contact-links {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            padding: 1rem 2rem;
-            background: transparent;
-            border: 2px solid var(--neon-blue);
-            color: var(--neon-blue);
-            text-decoration: none;
-            border-radius: 10px;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 243, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid var(--neon-blue);
             transition: all 0.3s;
+        }
+
+        .info-item:hover {
+            background: rgba(0, 243, 255, 0.1);
+            transform: translateX(10px);
+            border-left-color: var(--neon-pink);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
+            border-radius: 50%;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--neon-blue);
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .social-card {
+            padding: 2rem;
+            background: rgba(255, 0, 234, 0.05);
+            border: 2px solid rgba(255, 0, 234, 0.3);
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .social-card:hover {
+            background: rgba(255, 0, 234, 0.15);
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(255, 0, 234, 0.3);
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--neon-pink);
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(255, 0, 234, 0.1));
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 2px solid rgba(255, 0, 234, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--neon-pink), transparent);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            opacity: 0.3;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-emoji {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .cta-heading {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-pink);
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button-large {
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(255, 0, 234, 0.5);
+        }
+
+        .cta-button-large:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 50px rgba(0, 243, 255, 0.5);
+        }
+
+        .status-badge {
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid rgba(0, 255, 0, 0.5);
+            border-radius: 30px;
+            margin-top: 2rem;
+            font-weight: bold;
         }
 
-        .contact-link:hover {
-            background: var(--neon-blue);
-            color: #000;
-            box-shadow: 0 0 30px var(--neon-blue);
-            transform: translateY(-5px);
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #0f0;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         /* Responsive */
@@ -700,6 +868,10 @@
             
             .achievement-card {
                 width: 100%;
+            }
+            
+            .contact-wrapper {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -759,7 +931,7 @@
                     <h3>CollegeTip Gallery</h3>
                     <div class="project-date">March - April 2025</div>
                     <p>An immersive interactive gallery platform designed to showcase college resources, tips, and essential information for students navigating their academic journey.</p>
-                    <a href="#" class="project-link">View Project →</a>
+                    <a href=" https://arul-butterfly.github.io/photo-collegetip/" class="project-link">View Project →</a>
                 </div>
             </div>
             
@@ -769,7 +941,7 @@
                     <h3>Pet Friendly</h3>
                     <div class="project-date">April 2025</div>
                     <p>A comprehensive platform connecting pet lovers and facilitating pet-friendly services, creating a vibrant community for animal enthusiasts.</p>
-                    <a href="#" class="project-link">View Project →</a>
+                    <a href="https://arul-butterfly.github.io/petfriendly/" class="project-link">View Project →</a>
                 </div>
             </div>
             
@@ -779,7 +951,7 @@
                     <h3>Search Engine</h3>
                     <div class="project-date">February - March 2025</div>
                     <p>Custom-built search engine with advanced filtering capabilities and intelligent algorithms for enhanced information retrieval.</p>
-                    <a href="#" class="project-link">View Project →</a>
+                    <a href="https://arul-butterfly.github.io/ArulSearchWeb/" class="project-link">View Project →</a>
                 </div>
             </div>
             
@@ -789,7 +961,7 @@
                     <h3>Personal Website</h3>
                     <div class="project-date">December 2024 - Present</div>
                     <p>A continuously evolving digital portfolio showcasing my journey through technology, AI, and innovation. Built from scratch and constantly improving.</p>
-                    <a href="#" class="project-link">View Project →</a>
+                    <a href="https://arul-butterfly.github.io/arul.gethub.io/" class="project-link">View Project →</a>
                 </div>
             </div>
         </div>
@@ -896,62 +1068,68 @@
 
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
-        <div class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-btn"></div>
-                <div class="terminal-btn"></div>
-                <div class="terminal-btn"></div>
+        <div class="contact-wrapper">
+            <!-- Contact Info Card -->
+            <div class="contact-info-card">
+                <div class="contact-info-content">
+                    <h2 class="contact-title">Let's Connect</h2>
+                    <p class="contact-subtitle">Ready to collaborate on innovative projects!</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📧</div>
+                        <div class="info-text">
+                            <div class="info-label">Email</div>
+                            <div class="info-value">yoarul33@gmail.com</div>
+                        </div>
+                    </div>
+                    
+              
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-text">
+                            <div class="info-label">Location</div>
+                            <div class="info-value">Chennai, India</div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-grid">
+                        <a href="mailto:yoarul33@gmail.com" class="social-card">
+                            <div class="social-icon">💌</div>
+                            <div class="social-name">Email Me</div>
+                        </a>
+                        
+                        </a>
+                        <a href="www.linkedin.com/in/arul-yogeshwaran-783854342" class="social-card">
+                            <div class="social-icon">💼</div>
+                            <div class="social-name">LinkedIn</div>
+                        </a>
+                        <a href="https://arul-butterfly.github.io/portf/" class="social-card">
+                            <div class="social-icon">🐙</div>
+                            <div class="social-name">GitHub</div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="terminal-body">
-                <div class="terminal-line">
-                    <span class="terminal-prompt">arul@portfolio:~$</span>
-                    <span class="terminal-text">cat contact_info.txt</span>
-                </div>
-                <div class="terminal-line">
-                    <span style="color: var(--neon-pink);">╔════════════════════════════════════╗</span>
-                </div>
-                <div class="terminal-line">
-                    <span style="color: var(--neon-pink);">║</span>
-                    <span style="color: #0f0; margin-left: 1rem;">ARUL YOGESHWARAN</span>
-                </div>
-                <div class="terminal-line">
-                    <span style="color: var(--neon-pink);">║</span>
-                    <span style="color: var(--neon-blue); margin-left: 1rem;">AI Developer & Web Innovator</span>
-                </div>
-                <div class="terminal-line">
-                    <span style="color: var(--neon-pink);">╚════════════════════════════════════╝</span>
-                </div>
-                <div class="terminal-line" style="margin-top: 1rem;">
-                    <span style="color: #fff;">📧 Email:</span>
-                    <span style="color: var(--neon-blue); margin-left: 1rem;">yoarul33@gmail.com</span>
-                </div>
-                <div class="terminal-line">
-                    <span style="color: #fff;">📱 Phone:</span>
-                    <span style="color: var(--neon-blue); margin-left: 1rem;">+91 9788734888</span>
-                </div>
-                <div class="terminal-line">
-                    <span style="color: #fff;">📍 Location:</span>
-                    <span style="color: var(--neon-blue); margin-left: 1rem;">Chennai, India</span>
-                </div>
-                <div class="terminal-line" style="margin-top: 1rem;">
-                    <span style="color: #0f0;">💡 Status: Open for remote work & freelance projects</span>
-                </div>
-                <div class="terminal-line">
-                    <span style="color: #0f0;">🚀 Motto: Hungry to grow – that's my biggest asset!</span>
-                </div>
-                <div class="contact-links">
-                    <a href="mailto:yoarul33@gmail.com" class="contact-link">
-                        <span>📧</span> Email Me
-                    </a>
-                    <a href="tel:+919788734888" class="contact-link">
-                        <span>📱</span> Call Me
-                    </a>
-                    <a href="#" class="contact-link">
-                        <span>💼</span> LinkedIn
-                    </a>
-                    <a href="#" class="contact-link">
-                        <span>🐙</span> GitHub
-                    </a>
+            
+            <!-- CTA Card -->
+            <div class="cta-card">
+                <div class="cta-content">
+                    <div class="cta-emoji">🚀</div>
+                    <h3 class="cta-heading">Ready to Work!</h3>
+                    <p class="cta-text">
+                        I'm available for remote work and freelance projects. 
+                        Let's build something amazing together and push the 
+                        boundaries of what's possible with AI and web technology!
+                    </p>
+                    <a href="mailto:yoarul33@gmail.com" class="cta-button-large">Start a Project</a>
+                    <div class="status-badge">
+                        <div class="status-dot"></div>
+                        <span>Available for Opportunities</span>
+                    </div>
+                    <p style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.8;">
+                        💡 <em>"Hungry to grow – that's my biggest asset!"</em>
+                    </p>
                 </div>
             </div>
         </div>
